@@ -10,7 +10,7 @@ on:
     outputs:
       result:
         description: The result of the deployment operation
-        value: ${{ jobs.deploy.outputs.outcome }}
+        value: ${{ jobs.deploy.outputs.outcome }} # Reference to job-level output
     #secrets:
     #some-secret:
     #required: false
@@ -18,7 +18,8 @@ on:
 jobs:
   deploy:
     outputs:
-      outcome: ${{steps.set-result.outputs.step-result}}
+      outcome: ${{ steps.set-result.outputs.step-result }} # Job-level output from step
+
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
